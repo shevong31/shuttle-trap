@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Shuttle Trap — Pro AI Badminton</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <!-- Top Broadcast Scoreboard -->
+    <div class="scoreboard-bar">
+      <div class="hud-side">
+        <div class="avatar blue">YOU</div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>STAMINA</span><span id="pStaminaTxt">100%</span></div>
+          <div class="stamina-track"><div id="pStaminaBar" class="stamina-fill blue"></div></div>
+        </div>
+      </div>
+
+      <div class="score-center">
+        <div class="score-digits">
+          <span id="pScore" class="score-num blue-txt">0</span>
+          <span class="colon">:</span>
+          <span id="aScore" class="score-num red-txt">0</span>
+        </div>
+        <div id="serveInfo" class="serve-pill">SERVE • YOU (RIGHT)</div>
+      </div>
+
+      <div class="hud-side right">
+        <div class="bar-wrap">
+          <div class="bar-label"><span id="aStaminaTxt">100%</span><span>STAMINA</span></div>
+          <div class="stamina-track"><div id="aStaminaBar" class="stamina-fill red"></div></div>
+        </div>
+        <div class="avatar red">AI</div>
+      </div>
+    </div>
+
+    <!-- Main 2.5D Stadium Canvas + Arcade Controls -->
+    <div class="stage">
+      <canvas id="courtCanvas" width="960" height="480"></canvas>
+
+      <!-- Left Arcade D-Pad -->
+      <div class="arcade-left">
+        <button id="moveLeftBtn" class="arcade-btn nav-btn" title="Move Back (A / Left)">
+          <span class="icon">◀</span>
+          <span class="key-hint">A</span>
+        </button>
+        <button id="moveRightBtn" class="arcade-btn nav-btn" title="Move Forward (D / Right)">
+          <span class="icon">▶</span>
+          <span class="key-hint">D</span>
+        </button>
+      </div>
+
+      <!-- Right Arcade Shot Pad -->
+      <div class="arcade-right">
+        <button class="arcade-btn shot-btn btn-clear active" data-shot="CLEAR">
+          <span class="icon">↗</span>
+          <span class="lbl">CLEAR</span>
+          <span class="key-hint">1</span>
+        </button>
+        <button class="arcade-btn shot-btn btn-drop" data-shot="DROP">
+          <span class="icon">⤵</span>
+          <span class="lbl">DROP</span>
+          <span class="key-hint">2</span>
+        </button>
+        <button class="arcade-btn shot-btn btn-smash" data-shot="SMASH">
+          <span class="icon">⚡</span>
+          <span class="lbl">SMASH</span>
+          <span class="key-hint">3</span>
+        </button>
+        <button class="arcade-btn shot-btn btn-net" data-shot="NET_SHOT">
+          <span class="icon">〰</span>
+          <span class="lbl">NET</span>
+          <span class="key-hint">4</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Clean Bottom AI Engine & Match Control Bar -->
+    <div class="ai-dock">
+      <div class="dock-controls">
+        <select id="modeSelect">
+          <option value="singles">Singles Rules</option>
+          <option value="doubles">Doubles Rules</option>
+        </select>
+        <select id="algoSelect">
+          <option value="greedy">AI: Greedy Best-First</option>
+          <option value="hill_climbing">AI: Hill Climbing</option>
+        </select>
+        <button id="resetBtn" class="reset-btn">↻ New Match</button>
+      </div>
+
+      <div class="dock-telemetry">
+        <div id="aiPrediction" class="ai-badge">AI Engine Online — Press 1-4 or click a shot to rally!</div>
+        <div id="matchLog" class="match-log">Rally 0 • Waiting for serve</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
